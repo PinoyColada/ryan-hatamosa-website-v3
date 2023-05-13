@@ -44,6 +44,15 @@ const Navbar = () => {
                         return <a key={idx}>{item.label}</a>
                     })}
                 </div>
+                {currentTheme === "dark" ? (
+                    <button>
+                        <RiSunLine />
+                    </button>
+                ) : (
+                <button>
+                    <RiMoonFill/>
+                </button>
+                )}
             </div>
         </header>
     )
