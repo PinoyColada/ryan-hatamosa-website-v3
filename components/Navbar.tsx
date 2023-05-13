@@ -45,12 +45,14 @@ const Navbar = () => {
                     })}
                 </div>
                 {currentTheme === "dark" ? (
-                    <button>
-                        <RiSunLine />
+                    <button onClick={() => setTheme("light")}
+                    className="bg-slate-100 p-2 rounded-xl">
+                        <RiSunLine size={25} color="black"/>
                     </button>
                 ) : (
-                <button>
-                    <RiMoonFill/>
+                <button onClick={() => setTheme("dark")}
+                className="bg-slate-100 p-2 rounded-xl">
+                    <RiMoonFill size={25}/>
                 </button>
                 )}
             </div>
