@@ -35,11 +35,16 @@ const Navbar = () => {
         <header className='w-full mx-auto  px-4 sm:px-20 fixed top-0 z-50 shadow bg-white dark:bg-stone-900 dark:border-b dark:border-stone-600'>
             <div className='justify-between md:items-center md:flex'>
                 <div>
+                    <div>
                     <div className="md:py-5 md:block">
                         <h2 className="text-2x1 font-bold">Ryan Hatamosa</h2>
                     </div>
+                    <div>
+                        <button>{navbar ? <IoMdClose size={30} /> : <IoMdMenu size={30} />}</button>
+                    </div>
+                    </div>
                 </div>
-                <div className='md:flex md:space-x-6'>
+                <div className='items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0'>
                     {NAV_ITEMS.map((item, idx) => {
                         return <a key={idx}>{item.label}</a>
                     })}
