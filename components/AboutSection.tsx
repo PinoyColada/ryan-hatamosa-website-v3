@@ -1,5 +1,23 @@
 import React from 'react'
 
+const skills = [
+    { skill: "Java" },
+    { skill: "Spring" },
+    { skill: "Python" },
+    { skill: "HTML" },
+    { skill: "CSS" },
+    { skill: "JavaScript" },
+    { skill: "TypeScript" },
+    { skill: "React" },
+    { skill: "Next.js" },
+    { skill: "Tailwind CSS" },
+    { skill: "Git" },
+    { skill: "GitHub" },
+    { skill: "PostgreSQL" },
+    { skill: "MongoDB" },
+    { skill: "Firebase" },
+]
+
 const AboutSection = () => {
     return (
         <section id="about">
@@ -44,6 +62,21 @@ const AboutSection = () => {
                                 I&#39;m currently looking for a position. You should hire me. 🙂
                             </span>
                         </p>
+                    </div>
+                    <div className="text-center md:w-1/2 md:text-left">
+                        <h1 className="text-2xl font-bold mb-6">My Skills</h1>
+                        <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+                            {skills.map((item, idx) => {
+                                return (
+                                    <p
+                                        key={idx}
+                                        className="bg-gray-200 px-4 py-2 mr-2 mt-2 text-gray-500 rounded font-semibold"
+                                    >
+                                        {item.skill}
+                                    </p>
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>
