@@ -8,7 +8,7 @@ const HeroSection = () => {
     <section id="home">
       <div className="flex flex-col text-center items-center justify-center animate-fadeIn animation-delay-2 my-10 py-16 sm:py-32 md:py-48 md:flex-row md:space-x-4 md:text-left">
         <div className="md:mt-2 md:w-1/2">
-        <Image className="rounded-full shadow-2x1" src="/headshotpic.JPG" alt="profile photo" width={300} height={300}/>
+        <Image className="rounded-full shadow-2x1" src="/public/headshotpic.JPG" alt="profile photo" width={300} height={300}/>
         </div>
 
         <div className="md:mt-2 md:w-3/5">
