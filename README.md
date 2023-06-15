@@ -12,11 +12,8 @@
 ***
 
 ### ***Technologies Used***
-* Technology 1
-* Technology 2
-  * Sub-item 1
-  * Sub-item 2
-* Technology 3
+* Next.js
+* Tailwind CSS
 ***
 
 ### ***Getting Started***
