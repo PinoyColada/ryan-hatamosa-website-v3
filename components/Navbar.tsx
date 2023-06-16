@@ -4,6 +4,11 @@ import { Link } from "react-scroll/modules";
 import { useTheme } from "next-themes";
 import { RiMoonFill, RiSunLine } from "react-icons/ri";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
+import Image from "next/image";
+import {
+  AiOutlineGithub,
+  AiOutlineLinkedin,
+} from "react-icons/ai"
 
 interface NavItem {
   label: string;
@@ -35,11 +40,34 @@ const Navbar = () => {
       <div className="justify-between md:items-center md:flex">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <Link to="home">
-              <div className="container flex items-center space-x-2">
-                <h2 className="text-2xl font-bold">Ryan Hatamosa</h2>
-              </div>
-            </Link>
+            <div className="flex flex-row items-center justify-center space-x-2 mb-1">
+              <Link to="home" >
+                <Image
+                  src="/R_logo-browser.png"
+                  className="hover:-translate-y-1 transition-transform cursor-pointer text-neutral-500 dark:text-neutral-100"
+                  width={50}
+                  height={50}
+                  alt="logo"
+                />
+              </Link>
+              <a href="https://github.com/PinoyColada" rel="noreferrer" target="_blank">
+                <AiOutlineGithub
+                  className="hover:-translate-y-1 transition-transform cursor-pointer text-neutral-500 dark:text-neutral-100"
+                  size={30}
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ryan-hatamosa/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <AiOutlineLinkedin
+                  className="hover:-translate-y-1 transition-transform cursor-pointer text-neutral-500 dark:text-neutral-100"
+                  size={30}
+                />
+              </a>
+            </div>
+            <link rel="icon" href="/R_logo-browser.png" />
             <div className="md:hidden">
               <button
                 className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
@@ -52,9 +80,8 @@ const Navbar = () => {
         </div>
         <div>
           <div
-            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-              navbar ? "block" : "hidden"
-            }`}
+            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
+              }`}
           >
             <div className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
               {NAV_ITEMS.map((item, idx) => {
