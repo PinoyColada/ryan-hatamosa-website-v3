@@ -1,34 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio Website
 
-## Getting Started
+## Date: 06/13/2023
 
-First, run the development server:
+### By: Ryan Hatamosa
 
-```bash
-npm run dev
-```
+#### [GitHub](https://github.com/PinoyColada) | [LinkedIn](https://www.linkedin.com/feed/) | [HackerRank](https://www.hackerrank.com/pinoydol_colada)
+***
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### ***Description***
+#### A brief description of the project, what it's about, when and what you made it for, etc. ...
+***
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### ***Technologies Used***
+* Next.js
+* Tailwind CSS
+***
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### ***Getting Started***
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+##### Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+##### Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+##### Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+***
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### ***Screenshots***
 
-## Learn More
+##### ___Image Header 1___
+![JJK](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsomoskudasai.com%2Fwp-content%2Fuploads%2F2020%2F08%2Fjujutsu.jpg&f=1&nofb=1)
 
-To learn more about Next.js, take a look at the following resources:
+##### ___Image Header 2___
+![Bleach](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmangathrill.com%2Fwp-content%2Fuploads%2F2019%2F11%2Fich.png&f=1&nofb=1)
+***
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+##### ___Image Header 3___
+![Naruto](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic3.cbrimages.com%2Fwordpress%2Fwp-content%2Fuploads%2F2020%2F01%2FNaruto.jpg&f=1&nofb=1)
+***
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### ***Future Updates***
 
-## Deploy on Vercel
+- [ ] Future Update 1
+- [ ] Future Update 2
+- [x] Completed Update
+- [x] ~~Strikethrough~~ Items Also
+***
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### ***Credits***
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+##### Anime Images: [DuckDuckGo Search](http://www.duckduckgo.com)
+
+##### Lorem Ipsum Text: [Generator](https://loremipsum.io/)
+
+##### Markdown Guide: [ia.net](https://ia.net/writer/support/general/markdown-guide)
+
+##### Markdown Cheatsheet: [GitHub](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
+***
