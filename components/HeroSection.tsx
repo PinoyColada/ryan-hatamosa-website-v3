@@ -18,8 +18,7 @@ const HeroSection = () => {
             <span className="font-semibold text-teal-600">
               Computer Science Student @ UMGC{" "}
             </span>
-            based in Beltsville, MD. Working towards creating software that
-            makes life easier and more meaningful.
+            based in Beltsville, MD.
           </p>
           <a href="/cv.pdf" download="cv" className="text-neutral-100 font-semibold px-6 py-3 bg-teal-600 rounded shadow hover:bg-teal-700 margin-left: 4px;">
             Download My Resume
