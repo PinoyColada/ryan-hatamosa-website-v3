@@ -19,7 +19,7 @@ const projects = [
       "A website about me and showcases my projects (that you are currently on now!) Created with Next.js and Tailwind CSS",
     image: "/website.jpg",
     github: "https://github.com/PinoyColada/ryan-hatamosa-website-v3",
-    link: "www.google.com", // pending link
+    link: "https://ryanhatamosa.vercel.app/",
   },
   {
     name: "Body-Sculptors",
