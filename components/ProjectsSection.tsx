@@ -14,7 +14,7 @@ const projects = [
     link: "www.google.com", // pending link
   },
   {
-    name: "Ryan's Portfolio Website",
+    name: "Portfolio Website",
     description:
       "A website about me and showcases my projects (that you are currently on now!) Created with Next.js and Tailwind CSS",
     image: "/website.jpg",
