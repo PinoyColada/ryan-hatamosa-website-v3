@@ -25,7 +25,7 @@ const HeroSection = () => {
             based in Maryland.
           </p>
           <div className="flex flex-row justify-evenly md:justify-around">
-            <a href="/cv.pdf" download="cv" className="text-neutral-100 font-semibold px-6 py-3 bg-teal-600 rounded shadow hover:bg-teal-700 margin-left: 4px;">
+            <a href="/Ryan-Hatamosa-Resume2023.pdf" download="RyanHatamosa_CV" className="text-neutral-100 font-semibold px-6 py-3 bg-teal-600 rounded shadow hover:bg-teal-700 margin-left: 4px;">
               Download my Resume
             </a>
             <a href="mailto:ryan.hatamosa@gmail.com" className="text-neutral-100 font-semibold px-6 py-3 bg-teal-600 rounded shadow hover:bg-teal-700 margin-left: 4px;">
