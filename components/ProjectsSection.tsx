@@ -8,10 +8,10 @@ const projects = [
   {
     name: "Pirate Plunderers",
     description:
-      "A pirate themed space invaders game (currently developing with my team in my CMSC-495 class). Created with React and Flask",
+      "A pirate themed space invaders game (currently developing with my team in my CMSC-495 class, live link pending). Created with React and Flask",
     image: "/pirate_plunderers.jpg",
     github: "https://github.com/PinoyColada/Pirate-Plunderers",
-    link: "www.google.com", // pending link
+    link: "https://ryanhatamosa.vercel.app/", // pending link
   },
   {
     name: "Portfolio Website",
