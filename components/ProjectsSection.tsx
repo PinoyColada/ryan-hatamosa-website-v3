@@ -11,7 +11,7 @@ const projects = [
       "A pirate themed space invaders game (currently developing with my team in my CMSC-495 class, live link pending). Created with React and Flask",
     image: "/pirate_plunderers.jpg",
     github: "https://github.com/PinoyColada/Pirate-Plunderers",
-    link: "https://ryanhatamosa.vercel.app/", // pending link
+    link: "https://pirate-plunderers.vercel.app/",
   },
   {
     name: "Portfolio Website",
