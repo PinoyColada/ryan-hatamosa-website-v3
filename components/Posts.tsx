@@ -1,5 +1,6 @@
 import React from 'react'
 import { getSortedPostsData } from '@/lib/posts'
+import ListItem from "./ListItem"
 
 const Posts = () => {
     const posts = getSortedPostsData()
@@ -12,7 +13,7 @@ const Posts = () => {
             </h1>
             <ul className="w-full">
                 {posts.map(post => (
-                    JSON.stringify(post)
+                    <ListItem key={post.id} post={post} />
                 ))}
             </ul>
         </section>
