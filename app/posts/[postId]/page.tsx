@@ -32,8 +32,6 @@ export const generateMetadata = ({ params }: { params: { postId: string } }) => 
 const Post = async ({ params }: { params: { postId: string } }) => {
     const posts = getSortedPostsData();
     const { postId } = params;
-    console.log(params)
-    console.log("Hello")
 
     if (!posts.find(post => post.id === postId)) notFound();
 
@@ -42,16 +40,16 @@ const Post = async ({ params }: { params: { postId: string } }) => {
     const pubDate = getFormattedDate(date);
 
     return (
-        <main className="mx-auto max-w-3xl px-4 sm:px-6 md:max-w-5xl">
-            <h1 className="text-center font-bold text-4xl">
+        <main className="mx-auto max-w-3xl px-4 sm:px-6 md:max-w-5xl pt-20">
+            <h1 className="font-bold text-4xl pt-5  text-center">
                 {title}
-            <hr className="w-6 h-1 mx-auto my-4 bg-teal-500 border-0 rounded"></hr>
             </h1>
-            <p className="mt-0">
+            <h2 className="mt-0 text-center font-bold text-2xl">
                 {pubDate}
-            </p>
+            </h2>
+            <hr className="w-6 h-1 mx-auto my-4 bg-teal-500 border-0 rounded"></hr>
             <article>
-                <section dangerouslySetInnerHTML={{ __html: contentHtml }} />
+                <section className="text-center" dangerouslySetInnerHTML={{ __html: contentHtml }} />
                 <p>
                     <Link href="/">← Back to home</Link>
                 </p>
