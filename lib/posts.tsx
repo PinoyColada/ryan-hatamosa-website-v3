@@ -1,59 +1,76 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-import { remark } from 'remark'
-import html from 'remark-html'
+import { compileMDX } from 'next-mdx-remote/rsc'
 
-const postsDirectory = path.join(process.cwd(), 'blogposts')
-
-export function getSortedPostsData(){
-    // Get files names under /posts
-    const fileNames = fs.readdirSync(postsDirectory);
-    const allPostsData = fileNames.map((fileName) => {
-        // Remove ".md" from file name to get id
-        const id = fileName.replace(/\.md$/, '');
-
-        // Read markdown file as string
-        const fullPath = path.join(postsDirectory, fileName);
-        const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-        // Use gray-matter to parse the post metadata section
-        const matterResult = matter(fileContents);
-
-        const blogPost: BlogPost = {
-            id,
-            title: matterResult.data.title,
-            date: matterResult.data.date,
+type FileTree = {
+    "tree": [
+        {
+            "path": string,
         }
-
-        // Combine the data with the id
-        return blogPost
-    })
-    // Sort posts by date
-    return allPostsData.sort((a, b) => a.date < b.date ? 1 : -1);
-
+    ]
 }
 
-export async function getPostData(id: string) {
-    const fullPath = path.join(postsDirectory, `${id}.md`);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
+export async function getPostByName(fileName: string):
+Promise<BlogPost | undefined> {
+    const res = await fetch(`https://raw.githubusercontent.com/pinoycolada/blogposts/main/${fileName}}`, {
+        headers: {
+            Accept: 'application/vnd.github+json',
+            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+            'X-GitHub-Api-Version': '2022-11-28',
+        }
+    })
 
-    // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents);
+    if (!res.ok) return undefined
 
-    const processedContent = await remark()
-        .use(html)
-        .process(matterResult.content);
+    // getting the actually text from MDX file
+    const rawMDX = await res.text()
 
-    const contentHtml = processedContent.toString();
+    if (rawMDX === '404: Not Found') return undefined
 
-    const blogPostWithHTML: BlogPost & { contentHtml: string } = {
-        id,
-        title: matterResult.data.title,
-        date: matterResult.data.date,
-        contentHtml,
+    // using the compiled mdx, getting the frontmatter & content and telling th
+    const { frontmatter, content} = await compileMDX <{ title:
+    string, date: string, tags: string[]}>({
+        source: rawMDX,
+    })
+
+    // getting id without mdx extension using regex
+    const id = fileName.replace(/\.mdx$/, '')
+
+    const blogPostObj: BlogPost = { meta: { id, title: frontmatter.title, date: frontmatter.date,
+    tags: frontmatter.tags}, content}
+
+    return blogPostObj;
+}
+
+
+
+export async function getPostsMeta(): Promise<Meta[] | undefined> {
+    const res = await fetch(`https://api.github.com/pinoycolada/blogposts/git/trees/main?recursive=1`, {
+        headers: {
+            Accept: 'application/vnd.github+json',
+            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+            'X-GitHub-Api-Version': '2022-11-28',
+        }
+    })
+
+    if (!res.ok) return undefined
+
+    // Getting from the github repo
+    const repoFiletree : FileTree = await res.json()
+
+    // goes through each file from the github repo and only selects the files ending with '.mdx'
+    const filesArray = repoFiletree.tree.map(obj => obj.path).
+    filter(path => path.endsWith('.mdx'))
+
+    // creating empty array for metadata
+    const posts: Meta[] = []
+
+    for (const file of filesArray) {
+        const post = await getPostByName(file)
+        if (post) {
+            const { meta } = post
+            posts.push(meta)
+        }
     }
 
-    // Combine the data with the id
-    return blogPostWithHTML
+    // sorts the posts based the their date
+    return posts.sort((a, b) => a.date < b.date ? 1 : -1)
 }
