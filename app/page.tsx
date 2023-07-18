@@ -4,6 +4,8 @@ import ProjectsSection from "@/components/ProjectsSection"
 import Posts from "@/components/Posts"
 import Navbar from "@/components/Navbar"
 
+export const revalidate = 10
+
 export default function Home() {
   return (
     <>

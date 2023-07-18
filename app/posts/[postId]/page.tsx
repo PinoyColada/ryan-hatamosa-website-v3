@@ -7,7 +7,7 @@ import 'highlight.js/styles/github-dark.css'
 // setting route segment fig for revalidate
 // automatically make the pages server side rendered
 // because it will no cache anything
-export const revalidate = 0
+export const revalidate = 10
 
 type Props = {
     params: {
@@ -15,17 +15,17 @@ type Props = {
     }
 }
 
-// export const generateStaticParams = async () => {
-//     // all of the fectches from server side will be dediplicated during build
-//     const posts = await getPostsMeta();
+export const generateStaticParams = async () => {
+    // all of the fectches from server side will be dediplicated during build
+    const posts = await getPostsMeta();
 
-//     // if there are no posts
-//     if (!posts) return []
+    // if there are no posts
+    if (!posts) return []
 
-//     return posts.map(post => ({
-//         postId: post.id
-//     }));
-// };
+    return posts.map(post => ({
+        postId: post.id
+    }));
+};
 
 export const generateMetadata = async ({ params: { postId } }: Props) => {
 

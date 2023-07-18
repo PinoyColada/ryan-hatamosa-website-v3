@@ -2,7 +2,7 @@ import { getPostsMeta } from "@/lib/posts"
 import ListItem from "@/components/ListItem"
 import Link from "next/link"
 
-export const revalidate = 0
+export const revalidate = 10
 
 type Props = {
     params: {
@@ -10,20 +10,20 @@ type Props = {
     }
 }
 
-// export async function generateStaticParams() {
+export async function generateStaticParams() {
 
-//     // gets all of the post metadata
-//     const posts = await getPostsMeta()
+    // gets all of the post metadata
+    const posts = await getPostsMeta()
 
-//     // if it doesn't exist, return empty array
-//     if (!posts) return []
+    // if it doesn't exist, return empty array
+    if (!posts) return []
 
-//     // get all of the tags from all existing blog posts
-//     const tags = new Set(posts.map(post => post.tags).flat())
+    // get all of the tags from all existing blog posts
+    const tags = new Set(posts.map(post => post.tags).flat())
 
-//     // return objects
-//     return Array.from(tags).map((tag) => ({ tag }))
-// }
+    // return objects
+    return Array.from(tags).map((tag) => ({ tag }))
+}
 
 
 export function generateMetadata({ params: { tag } }: Props) {
