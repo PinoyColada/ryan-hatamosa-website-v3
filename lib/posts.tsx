@@ -10,7 +10,7 @@ type FileTree = {
 
 export async function getPostByName(fileName: string):
 Promise<BlogPost | undefined> {
-    const res = await fetch(`https://raw.githubusercontent.com/pinoycolada/blogposts/main/${fileName}}`, {
+    const res = await fetch(`https://raw.githubusercontent.com/pinoycolada/blogposts/main/${fileName}`, {
         headers: {
             Accept: 'application/vnd.github+json',
             Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
@@ -29,6 +29,9 @@ Promise<BlogPost | undefined> {
     const { frontmatter, content} = await compileMDX <{ title:
     string, date: string, tags: string[]}>({
         source: rawMDX,
+        options: {
+            parseFrontmatter: true,
+        }
     })
 
     // getting id without mdx extension using regex
@@ -43,7 +46,7 @@ Promise<BlogPost | undefined> {
 
 
 export async function getPostsMeta(): Promise<Meta[] | undefined> {
-    const res = await fetch(`https://api.github.com/pinoycolada/blogposts/git/trees/main?recursive=1`, {
+    const res = await fetch(`https://api.github.com/repos/pinoycolada/blogposts/git/trees/main?recursive=1`, {
         headers: {
             Accept: 'application/vnd.github+json',
             Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
@@ -57,8 +60,7 @@ export async function getPostsMeta(): Promise<Meta[] | undefined> {
     const repoFiletree : FileTree = await res.json()
 
     // goes through each file from the github repo and only selects the files ending with '.mdx'
-    const filesArray = repoFiletree.tree.map(obj => obj.path).
-    filter(path => path.endsWith('.mdx'))
+    const filesArray = repoFiletree.tree.map(obj => obj.path).filter(path => path.endsWith('.mdx'))
 
     // creating empty array for metadata
     const posts: Meta[] = []

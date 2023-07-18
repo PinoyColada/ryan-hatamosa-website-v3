@@ -26,8 +26,8 @@ type Props = {
 //     }));
 // };
 
-export const generateMetadata = async ({ params: { postId }}: Props ) => {
-   
+export const generateMetadata = async ({ params: { postId } }: Props) => {
+
     const post = await getPostByName(`${postId}.mdx`); // deduplicated
 
     if (!post) {
@@ -41,8 +41,8 @@ export const generateMetadata = async ({ params: { postId }}: Props ) => {
     };
 };
 
-const Post = async ({ params: { postId }}: Props) => {
-   
+const Post = async ({ params: { postId } }: Props) => {
+
     const post = await getPostByName(`${postId}.mdx`); // deduplicated
 
     if (!post) notFound()
@@ -52,7 +52,7 @@ const Post = async ({ params: { postId }}: Props) => {
 
     const pubDate = getFormattedDate(meta.date);
 
-    const tag = meta.tags.map((tag, i) => (
+    const tags = meta.tags.map((tag, i) => (
         <Link key={i} href={`/tags/${tag}`}>{tag}</Link>
     ))
 
@@ -66,10 +66,16 @@ const Post = async ({ params: { postId }}: Props) => {
             </h2>
             <hr className="w-6 h-1 mx-auto my-4 bg-teal-500 border-0 rounded"></hr>
             <article>
-                <section className="text-center" dangerouslySetInnerHTML={content} />
-                <p>
-                    <Link href="/">← Back to home</Link>
-                </p>
+                <section className="text-center">
+                    {content}
+                    <p>
+                        <Link href="/">← Back to home</Link>
+                    </p>
+                <h3>Related:</h3>
+                <div>
+                    {tags}
+                </div>
+                </section>
             </article>
         </main>
     );
