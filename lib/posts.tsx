@@ -1,4 +1,7 @@
 import { compileMDX } from 'next-mdx-remote/rsc'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeHighlight from 'rehype-highlight'
+import rehypeSlug from 'rehype-slug'
 
 type FileTree = {
     "tree": [
@@ -9,7 +12,7 @@ type FileTree = {
 }
 
 export async function getPostByName(fileName: string):
-Promise<BlogPost | undefined> {
+    Promise<BlogPost | undefined> {
     const res = await fetch(`https://raw.githubusercontent.com/pinoycolada/blogposts/main/${fileName}`, {
         headers: {
             Accept: 'application/vnd.github+json',
@@ -26,19 +29,35 @@ Promise<BlogPost | undefined> {
     if (rawMDX === '404: Not Found') return undefined
 
     // using the compiled mdx, getting the frontmatter & content and telling th
-    const { frontmatter, content} = await compileMDX <{ title:
-    string, date: string, tags: string[]}>({
+    const { frontmatter, content } = await compileMDX<{
+        title:
+        string, date: string, tags: string[]
+    }>({
         source: rawMDX,
         options: {
             parseFrontmatter: true,
+            mdxOptions: {
+                rehypePlugins: [
+                    rehypeHighlight,
+                    rehypeSlug,
+                    [rehypeAutolinkHeadings, {
+                        behavior: 'wrap'
+                    }]
+                ]
+
+            }
         }
     })
 
     // getting id without mdx extension using regex
     const id = fileName.replace(/\.mdx$/, '')
 
-    const blogPostObj: BlogPost = { meta: { id, title: frontmatter.title, date: frontmatter.date,
-    tags: frontmatter.tags}, content}
+    const blogPostObj: BlogPost = {
+        meta: {
+            id, title: frontmatter.title, date: frontmatter.date,
+            tags: frontmatter.tags
+        }, content
+    }
 
     return blogPostObj;
 }
@@ -57,7 +76,7 @@ export async function getPostsMeta(): Promise<Meta[] | undefined> {
     if (!res.ok) return undefined
 
     // Getting from the github repo
-    const repoFiletree : FileTree = await res.json()
+    const repoFiletree: FileTree = await res.json()
 
     // goes through each file from the github repo and only selects the files ending with '.mdx'
     const filesArray = repoFiletree.tree.map(obj => obj.path).filter(path => path.endsWith('.mdx'))
