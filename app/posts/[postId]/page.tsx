@@ -1,22 +1,34 @@
 import getFormattedDate from "@/lib/getFormattedDate"
-import { getSortedPostsData, getPostData } from "@/lib/posts"
+import { getPostsMeta, getPostByName } from "@/lib/posts"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 
-export const generateStaticParams = () => {
-    const posts = getSortedPostsData();
+// setting route segment fig for revalidate
+// automatically make the pages server side rendered
+// because it will no cache anything
+export const revalidate = 0
 
-    return posts.map(post => ({
-        postId: post.id
-    }));
-};
+type Props = {
+    params: {
+        postId: string
+    }
+}
 
-export const generateMetadata = ({ params }: { params: { postId: string } }) => {
-    const posts = getSortedPostsData();
-    console.log(params)
-    // const { postId } = params;
+// export const generateStaticParams = async () => {
+//     // all of the fectches from server side will be dediplicated during build
+//     const posts = await getPostsMeta();
 
-    const post = posts.find(post => post.id);
+//     // if there are no posts
+//     if (!posts) return []
+
+//     return posts.map(post => ({
+//         postId: post.id
+//     }));
+// };
+
+export const generateMetadata = async ({ params: { postId }}: Props ) => {
+   
+    const post = await getPostByName(`${postId}.mdx`); // deduplicated
 
     if (!post) {
         return {
@@ -25,31 +37,36 @@ export const generateMetadata = ({ params }: { params: { postId: string } }) => 
     }
 
     return {
-        title: post.title,
+        title: post.meta.title,
     };
 };
 
-const Post = async ({ params }: { params: { postId: string } }) => {
-    const posts = getSortedPostsData();
-    const { postId } = params;
+const Post = async ({ params: { postId }}: Props) => {
+   
+    const post = await getPostByName(`${postId}.mdx`); // deduplicated
 
-    if (!posts.find(post => post.id === postId)) notFound();
+    if (!post) notFound()
 
-    const { title, date, contentHtml } = await getPostData(postId);
+    // destructing metadata and content from post
+    const { meta, content } = post
 
-    const pubDate = getFormattedDate(date);
+    const pubDate = getFormattedDate(meta.date);
+
+    const tag = meta.tags.map((tag, i) => (
+        <Link key={i} href={`/tags/${tag}`}>{tag}</Link>
+    ))
 
     return (
         <main className="mx-auto max-w-3xl px-4 sm:px-6 md:max-w-5xl pt-20">
             <h1 className="font-bold text-4xl pt-5  text-center">
-                {title}
+                {meta.title}
             </h1>
             <h2 className="mt-0 text-center font-bold text-2xl">
                 {pubDate}
             </h2>
             <hr className="w-6 h-1 mx-auto my-4 bg-teal-500 border-0 rounded"></hr>
             <article>
-                <section className="text-center" dangerouslySetInnerHTML={{ __html: contentHtml }} />
+                <section className="text-center" dangerouslySetInnerHTML={content} />
                 <p>
                     <Link href="/">← Back to home</Link>
                 </p>
