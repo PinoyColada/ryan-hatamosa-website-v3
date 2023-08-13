@@ -8,7 +8,7 @@
 ***
 
 ### ***Description***
-#### A brief description of the project, what it's about, when and what you made it for, etc. ...
+#### My portfolio website
 ***
 
 ### ***Technologies Used***
