@@ -1,8 +1,8 @@
-import React from 'react'
-import Image from "next/image"
-import Link from "next/link"
-import SlideUp from './SlideUp'
-import { BsGithub, BsArrowUpRightSquare } from "react-icons/bs"
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import SlideUp from "./SlideUp";
+import { BsGithub, BsArrowUpRightSquare } from "react-icons/bs";
 
 const projects = [
   {
@@ -23,7 +23,8 @@ const projects = [
   },
   {
     name: "Body-Sculptors",
-    description: "An application where you can record your workouts. Created with MongoDB, Express, React.js, and Node.js (MERN)",
+    description:
+      "An application where you can record your workouts. Created with MongoDB, Express, React.js, and Node.js (MERN)",
     image: "/body-sculptors-logo.jpeg",
     github: "https://github.com/PinoyColada/Body-Sculptors",
     link: "https://agile-journey-75895.herokuapp.com/",
@@ -36,7 +37,7 @@ const projects = [
     github: "https://github.com/PinoyColada/Coder-Typer",
     link: "https://coder-typer.surge.sh/",
   },
-]
+];
 
 const ProjectsSection = () => {
   return (
@@ -86,12 +87,11 @@ const ProjectsSection = () => {
                 </div>
               </SlideUp>
             </div>
-          )
+          );
         })}
-
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default ProjectsSection
+export default ProjectsSection;
