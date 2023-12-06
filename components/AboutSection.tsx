@@ -48,13 +48,30 @@ const AboutSection = () => {
               object-oriented methodology to write efficient code. Onwards,
               I&#39;ve graduated from General Assembly&#39;s Software Immersive
               Bootcamp which consisted of 420+ hours of learning the
-              fundamentals of front-end and back-end web development. I've also
-              interned as a Full-stack developer to help develop{" "}
+              fundamentals of front-end and back-end web development. For my
+              experience, I've interned as a Full-stack developer to help
+              develop{" "}
               <Link
                 href="https://www.amotionsinc.com/"
                 className="hover:underline font-bold"
               >
                 Amotions
+              </Link>
+              . Currently, I am working for{" "}
+              <Link
+                href="https://astreya.com/"
+                className="hover:underline font-bold"
+              >
+                Astreya
+              </Link>{" "}
+              as a IT Technician providing support to Google employees.
+              Additionally, I volunteer as a Discord Bot Developer at Pitch
+              Labs.{" "}
+              <Link
+                href="https://www.pitchlabs.org/"
+                className="hover:underline font-bold"
+              >
+                Pitch Labs
               </Link>
               .
             </p>
@@ -74,7 +91,8 @@ const AboutSection = () => {
             <br />
             <p>
               <span className="font-bold text-teal-500">
-                I&#39;m currently looking for a position. You should hire me. 🙂
+                I&#39;m currently looking for a Software Development position.
+                You should hire me. 🙂
               </span>
             </p>
           </div>
