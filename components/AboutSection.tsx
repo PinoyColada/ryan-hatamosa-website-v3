@@ -65,8 +65,7 @@ const AboutSection = () => {
                 Astreya
               </Link>{" "}
               as a IT Technician providing support to Google employees.
-              Additionally, I volunteer as a Discord Bot Developer at Pitch
-              Labs.{" "}
+              Additionally, I volunteer as a Discord Bot Developer at{" "}
               <Link
                 href="https://www.pitchlabs.org/"
                 className="hover:underline font-bold"
