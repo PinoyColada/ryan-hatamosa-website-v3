@@ -30,7 +30,7 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-row justify-evenly md:justify-around">
             <a
-              href="/Ryan-Hatamosa-Resume2023.pdf"
+              href="/Ryan-Hatamosa-Resume-2023.docx.pdf"
               download="RyanHatamosa_CV"
               className="text-neutral-100 font-semibold px-6 py-3 bg-teal-600 rounded shadow hover:bg-teal-700 margin-left: 4px;"
             >
