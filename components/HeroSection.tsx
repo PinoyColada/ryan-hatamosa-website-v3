@@ -14,13 +14,9 @@ const HeroSection = () => {
         <div className="md:mt-2 md:w-3/5">
           <h1 className="text-4xl font-bold mt-6 md:mt-0 md:text-7xl">Hey, I&#39;m Ryan!</h1>
           <p className="text-lg mt-4 mb-6 md:text-2xl">
-            I&#39;m a{" "}
+            I&#39;m an{" "}
             <span className="font-semibold text-teal-600">
-              Full-stack developer{" "}
-            </span>
-            and{" "}
-            <span className="font-semibold text-teal-600">
-              Computer Science Student at UMGC{" "}
+              IT Administrator{" "}
             </span>
             based in Maryland.
           </p>
